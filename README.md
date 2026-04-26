@@ -160,3 +160,22 @@ system-aware-smart-scheduler/
 │   └── package.json
 ├── docker-compose.yml
 └── README.md
+
+---
+
+## Screenshots
+
+### Login / Register
+![Login Page](./screenshots/login-page.png)
+
+### Dashboard
+![Dashboard](./screenshots/dashboard.png)
+
+### Tasks Page
+![Tasks Page](./screenshots/tasks-page.png)
+
+### Schedules Page
+![Schedules Page](./screenshots/schedules-page.png)
+
+### Round Robin Visualization
+![Round Robin Visualization](./screenshots/round-robin-view.png)
