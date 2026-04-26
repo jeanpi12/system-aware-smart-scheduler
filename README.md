@@ -1,7 +1,6 @@
 # System-Aware Smart Scheduler
 
-A full-stack scheduling platform inspired by operating-system CPU scheduling concepts.  
-This application allows users to create and manage tasks, generate schedules using multiple algorithms, compare scheduling strategies, and visualize execution blocks through a modern React frontend backed by FastAPI and PostgreSQL.
+A full-stack scheduling platform inspired by operating-system CPU scheduling concepts. This application allows users to create and manage tasks, generate schedules using multiple algorithms, compare scheduling strategies, and visualize execution blocks through a modern React frontend backed by FastAPI and PostgreSQL.
 
 ## Overview
 
@@ -63,16 +62,13 @@ This project was designed to showcase full-stack engineering, backend architectu
 ## Scheduling Algorithms
 
 ### Priority Scheduling
-Tasks are ordered by highest priority first.  
-If two tasks share the same priority, earlier deadlines are used as a tie-breaker.
+Tasks are ordered by highest priority first. If two tasks share the same priority, earlier deadlines are used as a tie-breaker.
 
 ### Shortest Job First (SJF)
-Tasks are ordered by smallest estimated duration first.  
-This helps prioritize shorter jobs for faster completion.
+Tasks are ordered by smallest estimated duration first. This helps prioritize shorter jobs for faster completion.
 
 ### Round Robin
-Tasks are executed in time slices using a configurable time quantum.  
-This algorithm can split a task into multiple execution blocks and is useful for demonstrating time-sliced scheduling behavior.
+Tasks are executed in time slices using a configurable time quantum. This algorithm can split a task into multiple execution blocks and is useful for demonstrating time-sliced scheduling behavior.
 
 ---
 
@@ -159,7 +155,9 @@ system-aware-smart-scheduler/
 │   ├── nginx.conf
 │   └── package.json
 ├── docker-compose.yml
+├── screenshots/
 └── README.md
+```
 
 ---
 
@@ -179,3 +177,147 @@ system-aware-smart-scheduler/
 
 ### Round Robin Visualization
 ![Round Robin Visualization](./screenshots/round-robin-view.png)
+
+---
+
+## Local Development Setup
+
+### Backend
+
+```bash
+cd backend
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+```
+
+Backend runs at:
+
+```text
+http://127.0.0.1:8000
+```
+
+FastAPI docs:
+
+```text
+http://127.0.0.1:8000/docs
+```
+
+### Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend runs at:
+
+```text
+http://localhost:5173
+```
+
+---
+
+## Docker Setup
+
+To run the full application stack with Docker:
+
+```bash
+docker compose up --build
+```
+
+Services:
+- frontend: `http://localhost`
+- backend: `http://localhost:8000`
+- backend docs: `http://localhost:8000/docs`
+
+The Docker setup includes:
+- frontend container
+- backend container
+- PostgreSQL container
+- persistent PostgreSQL volume
+
+---
+
+## API Overview
+
+### Auth Routes
+- `POST /auth/register`
+- `POST /auth/login`
+- `GET /auth/me`
+
+### Task Routes
+- `GET /tasks`
+- `POST /tasks`
+- `PUT /tasks/{task_id}`
+- `DELETE /tasks/{task_id}`
+
+### Schedule Routes
+- `GET /schedule/priority`
+- `GET /schedule/sjf`
+- `GET /schedule/round-robin`
+- `GET /schedule/compare`
+
+---
+
+## Example Use Case
+
+A user logs in, creates several tasks with:
+- priority
+- estimated hours
+- deadlines
+- category
+- energy requirement
+
+The system then:
+1. stores the tasks in PostgreSQL
+2. generates schedules using different algorithms
+3. displays execution blocks visually
+4. compares algorithm outcomes
+5. helps the user understand how strategy affects schedule quality
+
+---
+
+## Why This Project Matters
+
+This project was built to demonstrate more than CRUD functionality.
+
+It shows:
+- full-stack application design
+- systems-inspired algorithm implementation
+- database-backed persistence
+- secure authentication
+- frontend/backend integration
+- Docker-based environment setup
+- visualization of scheduling behavior
+
+It is especially relevant for:
+- software engineering roles
+- backend engineering roles
+- infrastructure-oriented software roles
+- systems-focused engineering roles
+
+---
+
+## Future Improvements
+
+Possible future extensions include:
+
+- per-user dashboard analytics
+- calendar-style schedule layout
+- task completion tracking
+- recurring tasks
+- algorithm performance history
+- admin/observer mode
+- deployment to a cloud provider
+- CI/CD pipeline integration
+
+---
+
+## Author
+
+Jean-Pierre Atiles
+
+Built as a systems-inspired full-stack project to demonstrate scheduling logic, backend architecture, and modern web application development.
